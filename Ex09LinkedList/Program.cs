@@ -41,6 +41,7 @@ namespace Ex09LinkedList
 			*/
 			#endregion
 
+
 			int smallsize = 1000;
 			int largesize = smallsize * 10;
 
@@ -50,6 +51,9 @@ namespace Ex09LinkedList
 			ClubMember[] smallBinary = new ClubMember[smallsize];
 			ClubMember[] largeBinary = new ClubMember[largesize];
 
+			Stopwatch sw = new Stopwatch();
+			Console.Write("Populating arrays...");
+			sw.Start();
 			for (int i = 0; i < smallsize; i++)
 			{
 				smallLinear[i] = CMFactory.GetClubMember();
@@ -60,15 +64,27 @@ namespace Ex09LinkedList
 				largeLinear[i] = CMFactory.GetClubMember();
 				largeBinary[i] = CMFactory.GetClubMember();
 			}
-
-			
-
+			sw.Stop();
+			Console.Write(" "+sw.ElapsedMilliseconds+"ms\n");
+			Console.Write("Sorting binary arrays...");
+			sw.Reset();
+			sw.Start();
+			smallBinary = InsertionSort<ClubMember>(smallBinary);
+			largeBinary = InsertionSort<ClubMember>(largeBinary);
+			sw.Stop();
+			Console.Write(" "+sw.ElapsedMilliseconds+"ms\n");
+			Console.Write("Running searches...\n");
 			long SLtime = SearchLinear(smallLinear);
-			Console.WriteLine("SearcLinear(smallLinear): "+SLtime+"ms");
+			Console.WriteLine("SearchLinear(smallLinear): "+SLtime+"ms");
 			long LLtime = SearchLinear(largeLinear);
-			Console.WriteLine("SearcLinear(largeLinear): " + LLtime + "ms");
-			
+			Console.WriteLine("SearchLinear(largeLinear): " + LLtime + "ms");
 
+			long SBtime = SearchBinary(smallBinary);
+			Console.WriteLine("SearchBinary(smallBinary): " + SBtime + "ms");
+			long LBtime = SearchBinary(largeBinary);
+			Console.WriteLine("SearchBinary(largeBinary): " + LBtime + "ms");
+
+			Console.WriteLine("Finished.");
 
 		}
 
@@ -109,7 +125,45 @@ namespace Ex09LinkedList
 			timer.Stop();
 			return timer.ElapsedMilliseconds;
 		}
-		
 
+		long SearchBinary(IComparable[] arr)
+		{
+			Stopwatch timer = new Stopwatch();
+			Random rand = new Random();
+			ClubMember cm1 = (ClubMember)arr[rand.Next(arr.Length)];
+			ClubMember cm2 = (ClubMember)arr[rand.Next(arr.Length)];
+			ClubMember cm3 = (ClubMember)arr[rand.Next(arr.Length)];
+			timer.Start();
+			for (int j = 0; j < 1000; j++)
+			{
+
+				Array.BinarySearch(arr, cm1);
+				Array.BinarySearch(arr, cm2);
+				Array.BinarySearch(arr, cm3);
+
+			}
+			timer.Stop();
+			return timer.ElapsedMilliseconds;
+		}
+
+		public ClubMember[] InsertionSort<ClubMember>(ClubMember[] inputarray, Comparer<ClubMember> comparer = null)
+		{
+			var equalityComparer = comparer ?? Comparer<ClubMember>.Default;
+			for (var counter = 0; counter < inputarray.Length - 1; counter++)
+			{
+				var index = counter + 1;
+				while (index > 0)
+				{
+					if (equalityComparer.Compare(inputarray[index - 1], inputarray[index]) > 0)
+					{
+						var temp = inputarray[index - 1];
+						inputarray[index - 1] = inputarray[index];
+						inputarray[index] = temp;
+					}
+					index--;
+				}
+			}
+			return inputarray;
+		}
 	}
 }
