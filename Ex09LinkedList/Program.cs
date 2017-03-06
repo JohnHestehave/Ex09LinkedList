@@ -41,7 +41,8 @@ namespace Ex09LinkedList
 			*/
 			#endregion
 
-
+			#region linear/binary
+			/*
 			int smallsize = 1000;
 			int largesize = smallsize * 10;
 
@@ -85,7 +86,20 @@ namespace Ex09LinkedList
 			Console.WriteLine("SearchBinary(largeBinary): " + LBtime + "ms");
 
 			Console.WriteLine("Finished.");
+			*/
+			#endregion
 
+			#region BST
+
+			BST bst = new BST();
+			bst.Insert(10);
+			bst.Insert(20);
+			bst.Insert(5);
+			bst.Insert(30);
+
+			bst.printtree();
+
+			#endregion
 		}
 
 		public long SearchLinear(IComparable[] arr)
