@@ -104,6 +104,30 @@ namespace Ex09LinkedList
 			return s;
 		}
 
+		public bool Contains(object data)
+		{
+			Node n = Head;
+			while(n.Next != null)
+			{
+				if (n.Data.Equals(data)) return true;
+				n = n.Next;
+			}
+			return false;
+		}
+
+		public int IndexOf(object data)
+		{
+			int index = 0;
+			Node n = Head;
+			while(n.Next != null)
+			{
+				if (n.Data.Equals(data)) return index;
+				index++;
+				n = n.Next;
+			}
+			return -1;
+		}
+
 		
 	}
 }

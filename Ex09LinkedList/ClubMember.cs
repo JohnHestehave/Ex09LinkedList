@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ex09LinkedList
 {
-	public class ClubMember
+	public class ClubMember : IComparable
 	{
 		public int Nr;
 		public string Fname;
@@ -16,5 +16,33 @@ namespace Ex09LinkedList
 		{
 			return $"{Nr} {Fname} {Lname} {Age}";
 		}
+		public ClubMember()
+		{
+
+		}
+		public ClubMember(int nr, string fname, string lname, int age)
+		{
+			Nr = nr;
+			Fname = fname;
+			Lname = lname;
+			Age = age;
+		}
+		public int CompareTo(object obj)
+		{
+			ClubMember o = (ClubMember)obj;
+			return Nr.CompareTo(o.Nr);
+		}
+
+		public override bool Equals(object obj)
+		{
+			ClubMember o = (ClubMember)obj;
+			return o.Nr == Nr && o.Fname == Fname && o.Lname == Lname && o.Age == Age;
+		}
+
+		public override int GetHashCode()
+		{
+			return Nr.GetHashCode()+Fname.GetHashCode()+Lname.GetHashCode()+Age.GetHashCode();
+		}
+
 	}
 }
