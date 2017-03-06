@@ -75,18 +75,36 @@ namespace Ex09LinkedList
 		public long SearchLinear(IComparable[] arr)
 		{
 			Stopwatch timer = new Stopwatch();
-			timer.Start();
 			Random rand = new Random();
-			for (int u = 0; u < 3; u++)
+			ClubMember cm1 = (ClubMember)arr[rand.Next(arr.Length)];
+			ClubMember cm2 = (ClubMember)arr[rand.Next(arr.Length)];
+			ClubMember cm3 = (ClubMember)arr[rand.Next(arr.Length)];
+			timer.Start();
+			for (int j = 0; j < 1000; j++)
 			{
-				ClubMember cm = (ClubMember)arr[rand.Next(arr.Length)];
+
 				for (int i = 0; i < arr.Length; i++)
 				{
-					if (arr[i].Equals(cm))
+					if (arr[i].Equals(cm1))
 					{
 						break;
 					}
 				}
+				for (int i = 0; i < arr.Length; i++)
+				{
+					if (arr[i].Equals(cm2))
+					{
+						break;
+					}
+				}
+				for (int i = 0; i < arr.Length; i++)
+				{
+					if (arr[i].Equals(cm3))
+					{
+						break;
+					}
+				}
+
 			}
 			timer.Stop();
 			return timer.ElapsedMilliseconds;
