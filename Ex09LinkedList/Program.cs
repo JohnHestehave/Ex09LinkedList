@@ -90,7 +90,7 @@ namespace Ex09LinkedList
 			#endregion
 
 			#region BST
-
+			/*
 			BST bst = new BST();
 			bst.Insert(10);
 			bst.Insert(20);
@@ -98,8 +98,62 @@ namespace Ex09LinkedList
 			bst.Insert(30);
 
 			bst.printtree();
+			*/
+			#endregion
+
+			#region HashADT
+
+			int smallsize = 1000;
+			int largesize = smallsize * 10;
+
+			HashADT smallhash = new HashADT(1000);
+			HashADT largehash = new HashADT(10000);
+
+			for(int i = 0; i< smallsize*1.1; i++)
+				smallhash.Insert(CMFactory.GetClubMember());
+			for (int i = 0; i < largesize*1.1; i++)
+				largehash.Insert(CMFactory.GetClubMember());
+
+			Random rand = new Random();
+			ClubMember cm1, cm2, cm3, cm4, cm5, cm6;
+			do cm1 = (ClubMember)smallhash.GetElement(rand.Next(smallsize));
+			while (cm1 == null);
+			do cm2 = (ClubMember)smallhash.GetElement(rand.Next(smallsize));
+			while (cm2 == null);
+			do cm3 = (ClubMember)smallhash.GetElement(rand.Next(smallsize));
+			while (cm3 == null);
+			do cm4 = (ClubMember)largehash.GetElement(rand.Next(smallsize));
+			while (cm4 == null);
+			do cm5 = (ClubMember)largehash.GetElement(rand.Next(smallsize));
+			while (cm5 == null);
+			do cm6 = (ClubMember)largehash.GetElement(rand.Next(smallsize));
+			while (cm6 == null);
+
+			Stopwatch hashwatch = new Stopwatch();
+			hashwatch.Start();
+			for (int i = 0; i < 1000; i++)
+			{
+				smallhash.Search(cm1);
+				smallhash.Search(cm2);
+				smallhash.Search(cm3);
+			}
+			hashwatch.Stop();
+			Console.WriteLine("smallhash timer: "+hashwatch.ElapsedMilliseconds+"ms");
+			hashwatch.Reset();
+			hashwatch.Start();
+			for (int i = 0; i < 1000; i++)
+			{
+				largehash.Search(cm4);
+				largehash.Search(cm5);
+				largehash.Search(cm6);
+			}
+			hashwatch.Stop();
+			Console.WriteLine("largehash timer: " + hashwatch.ElapsedMilliseconds + "ms");
+
+
 
 			#endregion
+
 		}
 
 		public long SearchLinear(IComparable[] arr)

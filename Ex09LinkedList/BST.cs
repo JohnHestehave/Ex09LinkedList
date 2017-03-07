@@ -30,6 +30,7 @@ namespace Ex09LinkedList
 						{
 							node.left = new BSTNode();
 							node.left.data = data;
+							count++;
 							break;
 						}
 						node = node.left;
@@ -40,6 +41,7 @@ namespace Ex09LinkedList
 						{
 							node.right = new BSTNode();
 							node.right.data = data;
+							count++;
 							break;
 						}
 						node = node.right;

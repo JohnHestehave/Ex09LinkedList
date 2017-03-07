@@ -41,7 +41,7 @@ namespace Ex09LinkedList
 
 		public override int GetHashCode()
 		{
-			return Nr.GetHashCode()+Fname.GetHashCode()+Lname.GetHashCode()+Age.GetHashCode();
+			return Math.Abs(Nr.GetHashCode()+Fname.GetHashCode()+Lname.GetHashCode()+Age.GetHashCode());
 		}
 
 	}

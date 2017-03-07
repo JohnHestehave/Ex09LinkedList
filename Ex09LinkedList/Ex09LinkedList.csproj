@@ -47,6 +47,7 @@
     <Compile Include="BSTNode.cs" />
     <Compile Include="ClubMember.cs" />
     <Compile Include="CMFactory.cs" />
+    <Compile Include="HashADT.cs" />
     <Compile Include="MyList.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Program.cs" />
