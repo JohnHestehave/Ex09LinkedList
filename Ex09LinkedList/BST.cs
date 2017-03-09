@@ -50,12 +50,35 @@ namespace Ex09LinkedList
 				
 			}
 		}
-		public void printtree()
+
+		public bool Search(IComparable data)
 		{
-			Console.WriteLine(root.data.ToString());
-			Console.WriteLine(root.left.data.ToString());
-			Console.WriteLine(root.right.data.ToString());
-			Console.WriteLine(root.right.right.data.ToString());
+			BSTNode node = root;
+			while (node != null)
+			{
+				if (data.CompareTo(node.data) < 0)
+				{
+					node = node.left;
+				}
+				else if (data.CompareTo(node.data) > 0)
+				{
+					node = node.right;
+				}
+				else
+				{
+					return true;
+				}
+			}
+			return false;
+
+		}
+
+		public void PrintTree()
+		{
+			if(root != null)
+			{
+				root.PrintData();
+			}
 		}
 	}
 }

@@ -90,19 +90,24 @@ namespace Ex09LinkedList
 			#endregion
 
 			#region BST
-			/*
+			
 			BST bst = new BST();
+			for(int i = 0; i < 10; i++)
+			{
+				bst.Insert(CMFactory.GetClubMember());
+			}
+			/*
 			bst.Insert(10);
 			bst.Insert(20);
 			bst.Insert(5);
 			bst.Insert(30);
-
-			bst.printtree();
 			*/
+			bst.PrintTree();
+			
 			#endregion
 
 			#region HashADT
-
+			/*
 			int smallsize = 1000;
 			int largesize = smallsize * 10;
 
@@ -150,7 +155,7 @@ namespace Ex09LinkedList
 			hashwatch.Stop();
 			Console.WriteLine("largehash timer: " + hashwatch.ElapsedMilliseconds + "ms");
 
-
+			*/
 
 			#endregion
 

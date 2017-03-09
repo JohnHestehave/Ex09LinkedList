@@ -12,5 +12,17 @@ namespace Ex09LinkedList
 		public BSTNode left;
 		public BSTNode right;
 		
+		public void PrintData()
+		{
+			if(left != null)
+			{
+				left.PrintData();
+			}
+			Console.WriteLine(data.ToString());
+			if(right != null)
+			{
+				right.PrintData();
+			}
+		}
 	}
 }
