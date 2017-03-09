@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace Ex09LinkedList
 {
@@ -45,6 +46,9 @@ namespace Ex09LinkedList
 							break;
 						}
 						node = node.right;
+					}else
+					{
+						throw new DuplicateNameException("Duplicate Number");
 					}
 				}
 				

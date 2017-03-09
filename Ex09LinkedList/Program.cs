@@ -92,7 +92,7 @@ namespace Ex09LinkedList
 			#region BST
 			
 			BST bst = new BST();
-			for(int i = 0; i < 10; i++)
+			for(int i = 0; i < 50; i++)
 			{
 				bst.Insert(CMFactory.GetClubMember());
 			}
